@@ -32,7 +32,7 @@ while True:
 	print "---------- ALAN ICERSINDE OLAN KISILER--------"
 	for beacon in returnedList:
 		for key, value in customers.iteritems():
-			if beacon.find(str(value) != -1:
-        		ad="Adi:" + str(key)
-			mac=" - Mac Adresi:" + str(value)
-			print ad, mac
+			if beacon.find(str(value)) != -1:
+        			ad = "Adi:" + str(key)
+				mac=" - Mac Adresi:" + str(value)
+				print ad, mac
