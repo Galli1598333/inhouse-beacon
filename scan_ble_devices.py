@@ -67,8 +67,8 @@ while True:
 	for beacon in returnedList:
 		for key, value in customers.iteritems():
     			mac_api=value.split("#");
-				dv_mac = mac_api[0]
-				registration_id = mac_api[1]
+			dv_mac = mac_api[0]
+			registration_id = mac_api[1]
 
 			if beacon.find(str(dv_mac)) != -1:
         			ad = "Adi:" + str(key)
