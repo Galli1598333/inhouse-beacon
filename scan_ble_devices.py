@@ -7,6 +7,11 @@ import sqlite3
 import datetime
 from pyfcm import FCMNotification
 
+#firebase
+
+api_key="AAAA_4CCsfU:APA91bFyBB2Rm4JDT4rHez2lgxgmqun1AytQH0VIZ7ux_WQnhlFs6T68HniZSrr22i4m1KfaNZcSktUWbkjN-aj0sodI74NC5ifHaacMhT6v651WCOc-l3-8_wY5cFFb_iyiLCxM-oC-"
+push_service = FCMNotification(api_key=api_key)
+
 #sqlite
 conn = sqlite3.connect('db/bl_log.db')
 
@@ -61,9 +66,16 @@ while True:
 	print "--TANIMLANAN KISILER:"
 	for beacon in returnedList:
 		for key, value in customers.iteritems():
-			if beacon.find(str(value)) != -1:
+    			mac_api=value.split("#");
+				dv_mac = mac_api[0]
+				registration_id = mac_api[1]
+
+			if beacon.find(str(dv_mac)) != -1:
         			ad = "Adi:" + str(key)
-				mac=" - Mac Adresi:" + str(value)
+				mac=" - Mac Adresi:" + str(dv_mac)
 				print ad, mac
 				insert_user_data=(str(key),str(value),now.isoformat())
 				insert_log(insert_user_data)
+				message_title = "Hosgeldiniz"
+				message_body = "Merhaba "+str(key)+" Sıra Almak Ister misiniz?"
+				result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message_body)
