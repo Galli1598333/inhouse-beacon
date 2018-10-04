@@ -46,11 +46,11 @@ except:
 
 blescan.hci_le_set_scan_parameters(sock)
 blescan.hci_enable_le_scan(sock)
-
+print "--------------------------------------------"
 while True:
 	now = datetime.datetime.now()
 	returnedList = blescan.parse_events(sock, 10)
-	print "----------BULUNAN CIHAZLAR--------"
+	print "--BULUNAN CIHAZLAR:"
 	for beacon in returnedList:
 		print beacon
 		bl_data = beacon.split(',')
@@ -58,7 +58,7 @@ while True:
 		insert_anon_data=(mac,now.isoformat())
 		insert_anon_log(insert_anon_data)
 
-	print "----------TANINMLANAN KISILER--------"
+	print "--TANIMLANAN KISILER:"
 	for beacon in returnedList:
 		for key, value in customers.iteritems():
 			if beacon.find(str(value)) != -1:
