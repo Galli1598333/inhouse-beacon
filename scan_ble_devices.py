@@ -77,5 +77,6 @@ while True:
 				insert_user_data=(str(key),str(value),now.isoformat())
 				insert_log(insert_user_data)
 				message_title = "Hosgeldiniz"
-				message_body = "Merhaba "+str(key)+" Sıra Almak Ister misiniz?"
+				message_body = "Merhaba "+str(key)+" Sira Almak Ister misiniz?"
 				result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message_body)
+				print result
