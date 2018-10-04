@@ -18,7 +18,7 @@ def insert_log(bl_log_data):
     cur.execute(sql, bl_log_data)
 
 def insert_anon_log(bl_log_data):
-    sql = ''' INSERT INTO Log(Mac,InsertedDate)
+    sql = ''' INSERT INTO Log_Anonymus(Mac,InsertedDate)
               VALUES(?,?) '''
     cur = conn.cursor()
     cur.execute(sql, bl_log_data)
