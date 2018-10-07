@@ -54,7 +54,7 @@ blescan.hci_enable_le_scan(sock)
 print "--------------------------------------------"
 while True:
 	now = datetime.datetime.now()
-	returnedList = blescan.parse_events(sock, 10)
+	returnedList = blescan.parse_events(sock, 50)
 	print "--BULUNAN CIHAZLAR:"
 	for beacon in returnedList:
 		print beacon
